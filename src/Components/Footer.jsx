@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer
-      className="fixed bottom-0 w-full bg-background px-4 py-2 flex items-center justify-center text-center"
+      className="fixed bottom-0 w-full bg-background py-2 flex items-center justify-center text-center"
       style={{ color: "#475fae" }}
     >
       <p className="text-2xl font-light text-gray-200">

@@ -1,19 +1,20 @@
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
 function Output() {
   const [value1, setValue1] = useState("");
+  const [error, setError] = useState(false);
   const [userData, setUserData] = useState({
-    name: "Default Name",
-    company: "Default Company",
-    location: "Default Location",
-    public_repos: 0,
-    avatar_url: "https://via.placeholder.com/150", // Placeholder image
+    name: "",
+    company: "",
+    location: "",
+    avatar_url: "src/Images/user.png", // Placeholder image
     html_url: "#",
-    updated_at: "N/A",
-    created_at: "N/A",
   });
 
   const API_Url = "https://api.github.com/users/";
+
   function handleChange(event) {
     setValue1(event.target.value);
   }
@@ -23,19 +24,21 @@ function Output() {
 
     try {
       if (value1.trim() === "") {
-        alert("Enter your username");
+        setError(true);
       } else {
-        console.log(value1);
-
         const response = await fetch(API_Url + value1);
 
         if (!response.ok) {
-          alert("User not found please enter correct user");
+          setError(true);
+
+          if (response.status === 404) {
+            setError(true);
+          }
         }
 
         const jData = await response.json();
         setUserData(jData);
-        console.log({ userData });
+        setError(false);
       }
     } catch (error) {
       console.error(error.message);
@@ -46,11 +49,21 @@ function Output() {
     <div className="text-white w-full h-full flex flex-col justify-center items-center">
       <img
         src={userData.avatar_url}
+        alt="User Avatar"
         className="w-64 h-64 rounded-full border-2 flex"
       />
+      {error && (
+        <div className="bg-red-500 border border-red-600 text-white px-4 py-3 mt-3 rounded">
+          <strong className="font-bold">Error:</strong>
+          <span className="block sm:inline">
+            {" "}
+            Please enter a valid username
+          </span>
+        </div>
+      )}
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center w-4/5 max-w-lg p-4 rounded"
+        className="flex flex-col w-4/5 max-w-lg p-4 rounded"
       >
         <input
           type="text"
@@ -61,27 +74,36 @@ function Output() {
         />
         <button
           type="submit"
-          className="w-full text-white bg-green-400 px-4 py-2 text-lg rounded"
+          className="w-full text-white bg-gradient-to-br from-indigo-600 to-green-500 px-4 py-2 text-lg rounded border-2 border-green-300"
         >
           Submit
         </button>
       </form>
-      <div className="mt-4 p-4 text-white w-4/5 max-w-lg">
-        <h2 className="text-3xl font-medium"> {userData.name}</h2>
-        <h2 className="text-xl">{userData.company}</h2>
-        <h2 className="text-xl">{userData.location}</h2>
-        <h2 className="text-xl">Public Repos: {userData.public_repos}</h2>
-        <a
-          href={userData.html_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-green-400 text-xl"
-        >
-          View GitHub Profile
-        </a>
-        <h2 className="text-l">Last updated @ {userData.updated_at}</h2>
-        <h2 className="text-l">Account created on {userData.created_at}</h2>
-      </div>
+
+      {userData.name && (
+        <div className="mt-4 p-4 text-white w-4/5 max-w-lg flex flex-col items-center">
+          <h2 className="text-3xl font-medium">Name: {userData.name}</h2>
+          {userData.company && (
+            <h2 className="text-xl">Company: {userData.company}</h2>
+          )}
+          {userData.location && (
+            <h2 className="text-xl">Location: {userData.location}</h2>
+          )}
+          {userData.public_repos && (
+            <h2 className="text-xl">Public Repos: {userData.public_repos}</h2>
+          )}
+          {userData.html_url && (
+            <a
+              href={userData.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-400 text-xl"
+            >
+              View <FontAwesomeIcon icon={faGithub} /> Profile
+            </a>
+          )}
+        </div>
+      )}
     </div>
   );
 }
