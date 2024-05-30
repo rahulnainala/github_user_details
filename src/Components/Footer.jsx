@@ -4,11 +4,11 @@ const Footer = () => {
       className="fixed bottom-0 w-full bg-background py-2 flex items-center justify-center text-center"
       style={{ color: "#475fae" }}
     >
-      <p className="text-2xl font-light text-gray-200">
+      <p className="text-xl font-light text-gray-200">
         Developed by{" "}
         <a
           href="https://rahulnainala.com"
-          className="no-underline text-green-400 text-xl"
+          className="no-underline text-indigo-400 text-2xl"
           target="_blank"
           rel="noopener noreferrer"
         >

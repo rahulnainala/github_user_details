@@ -74,7 +74,7 @@ function Output() {
         />
         <button
           type="submit"
-          className="w-full text-white bg-gradient-to-br from-indigo-600 to-green-500 px-4 py-2 text-lg rounded border-2 border-green-300"
+          className="w-full text-white bg-gradient-to-br from-indigo-900 to-blue-400 px-4 py-2 text-lg rounded border-2 border-white"
         >
           Submit
         </button>
@@ -82,7 +82,7 @@ function Output() {
 
       {userData.name && (
         <div className="mt-4 p-4 text-white w-4/5 max-w-lg flex flex-col items-center">
-          <h2 className="text-3xl font-medium">Name: {userData.name}</h2>
+          <h2 className="text-3xl font-light">Name: {userData.name}</h2>
           {userData.company && (
             <h2 className="text-xl">Company: {userData.company}</h2>
           )}

@@ -10,7 +10,7 @@ function Header() {
             window.location.reload();
           }}
         >
-          <FontAwesomeIcon icon={faGitAlt} color="white" size="3x" />{" "}
+          <FontAwesomeIcon icon={faGitAlt} color="white" size="3x" alt="icon" />{" "}
         </button>
       </div>
     </>
