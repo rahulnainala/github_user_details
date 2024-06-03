@@ -1,7 +1,7 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-
+import "./Styles.css";
 function Output() {
   const [value1, setValue1] = useState("");
   const [error, setError] = useState(false);
@@ -71,11 +71,11 @@ function Output() {
           placeholder="Enter your username"
           value={value1}
           onChange={handleChange}
-          className="text-black w-full p-2 mb-4 text-lg rounded"
+          className="text-white bg-inherit w-full p-2 mb-4 text-lg rounded border-2 border-white glow-on-hover"
         />
         <button
           type="submit"
-          className="w-full text-white bg-gradient-to-br from-indigo-900 to-blue-400 px-4 py-2 text-lg rounded border-2 border-white"
+          className="w-full text-white px-4 py-2 text-lg rounded border-2 border-white glow-on-hover"
         >
           Submit
         </button>
@@ -98,7 +98,7 @@ function Output() {
               href={userData.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-400 text-xl"
+              className="text-white text-xl"
             >
               View <FontAwesomeIcon icon={faGithub} /> Profile
             </a>
