@@ -9,7 +9,8 @@ function Output() {
     name: "",
     company: "",
     location: "",
-    avatar_url: "/public/images/user.png", // Placeholder image
+    avatar_url:
+      "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png", // Placeholder image
     html_url: "#",
   });
 
@@ -52,7 +53,7 @@ function Output() {
         alt="User Avatar"
         className="w-64 h-64 rounded-full border-2 flex"
       />
-      {error && (
+      {!!error && (
         <div className="bg-red-500 border border-red-600 text-white px-4 py-3 mt-3 rounded">
           <strong className="font-bold">Error:</strong>
           <span className="block sm:inline">
@@ -80,19 +81,19 @@ function Output() {
         </button>
       </form>
 
-      {userData.name && (
+      {!!userData.name && (
         <div className="mt-4 p-4 text-white w-4/5 max-w-lg flex flex-col items-center">
           <h2 className="text-3xl font-light">Name: {userData.name}</h2>
-          {userData.company && (
+          {!!userData.company && (
             <h2 className="text-xl">Company: {userData.company}</h2>
           )}
-          {userData.location && (
+          {!!userData.location && (
             <h2 className="text-xl">Location: {userData.location}</h2>
           )}
-          {userData.public_repos && (
+          {!!userData.public_repos && (
             <h2 className="text-xl">Public Repos: {userData.public_repos}</h2>
           )}
-          {userData.html_url && (
+          {!!userData.html_url && (
             <a
               href={userData.html_url}
               target="_blank"
