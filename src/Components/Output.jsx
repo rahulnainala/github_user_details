@@ -49,7 +49,10 @@ function Output() {
   return (
     <div className="text-white w-full h-full flex flex-col justify-center items-center">
       <img
-        src={userData.avatar_url}
+        src={
+          userData.avatar_url ||
+          "https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png"
+        }
         alt="User Avatar"
         className="w-64 h-64 rounded-full border-2 flex"
       />
