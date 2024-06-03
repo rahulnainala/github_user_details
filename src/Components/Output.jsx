@@ -9,7 +9,7 @@ function Output() {
     name: "",
     company: "",
     location: "",
-    avatar_url: "/user.png", // Placeholder image
+    avatar_url: "/public/images/user.png", // Placeholder image
     html_url: "#",
   });
 
