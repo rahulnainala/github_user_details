@@ -54,8 +54,7 @@ function Output() {
         className="w-64 h-64 rounded-full border-2 flex"
       />
       {!!error && (
-        <div className="bg-red-500 border border-red-600 text-white px-4 py-3 mt-3 rounded">
-          <strong className="font-bold">Error:</strong>
+        <div className="bg-red-600 border-2 border-red-400 text-white px-4 py-3 mt-3 rounded">
           <span className="block sm:inline">
             {" "}
             Please enter a valid username
