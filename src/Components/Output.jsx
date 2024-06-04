@@ -30,22 +30,19 @@ function Output() {
         const response = await fetch(API_Url + value1);
 
         if (!response.ok) {
-          setError(true);
-
           if (response.status === 404) {
             setError(true);
           }
+        } else {
+          const jData = await response.json();
+          setUserData(jData);
+          setError(false);
         }
-
-        const jData = await response.json();
-        setUserData(jData);
-        setError(false);
       }
     } catch (error) {
       console.error(error.message);
     }
   }
-
   return (
     <div className="text-white w-full h-full flex flex-col justify-center items-center">
       <img
